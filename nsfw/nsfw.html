@@ -11,14 +11,14 @@
   <body>
     <header>
       <h1>hi there, its mangaguy9</h1>
-      <a href="../index.html">SFW</a>
+      <a href="/">SFW</a>
       <div class="selection-wrap">
-        <select name="select" id="select">
-          <option onclick="getit('nsfw','waifu')">waifu</option>
-          <option onclick="getit('nsfw','neko')">neko</option>
-          <option onclick="getit('nsfw','blowjob')">blowjob</option>
+        <select name="select" id="select" onchange="okay('nsfw')">
+          <option value="waifu">waifu</option>
+          <option value="neko">neko</option>
+          <option value="blowjob">blowjob</option>
         </select>
-        <button onclick="getit()">load more</button>
+        <button onclick="okay('nsfw')">load more</button>
       </div>
     </header>
     <div class="wrap"></div>
