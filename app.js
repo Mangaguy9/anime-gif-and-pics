@@ -3,11 +3,15 @@ const wrap = document.querySelector('.wrap');
 const a = document.querySelector('a');
 
 a.addEventListener('click', () => {
-  localStorage.removeItem(1);
+  sessionStorage.setItem(1, a.innerHTML.toLowerCase());
 });
 
 window.addEventListener('load', () => {
-  getit('waifu');
+  if (sessionStorage.getItem(1)) {
+    getit(sessionStorage.getItem(1), 'waifu');
+  } else {
+    getit('sfw', 'waifu');
+  }
 });
 
 const getit = (type, category) => {
@@ -17,12 +21,12 @@ const getit = (type, category) => {
       fetch(url + type + '/' + category)
         .then((res) => res.json())
         .then((pic) => show(pic.url));
-      localStorage.setItem(1, type);
-      localStorage.setItem(2, category);
+      sessionStorage.setItem(1, type);
+      sessionStorage.setItem(2, category);
     }
   } else {
     for (i = 0; i < 20; i++) {
-      fetch(url + localStorage.getItem(1) + '/' + localStorage.getItem(2))
+      fetch(url + sessionStorage.getItem(1) + '/' + sessionStorage.getItem(2))
         .then((res) => res.json())
         .then((pic) => show(pic.url));
     }
